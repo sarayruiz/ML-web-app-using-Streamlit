@@ -15,7 +15,7 @@ val1 = st.text_input("Introduzca URL", value="", max_chars=None, key=None, type=
     
     
 if st.button("Predict"):
-    prediction = str(model.predict([val1])[0])
+    prediction = str(model.predict([val1]))
     pred_class = class_dict[prediction]
     st.divider()
     st.write("Prediction:", pred_class)
