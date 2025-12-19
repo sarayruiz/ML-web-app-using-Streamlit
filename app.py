@@ -1,21 +1,19 @@
 from pickle import load
 import streamlit as st
 
-
-model = load(open('data/models/12_nlp_url_spam.pkl', 'rb'))
-
-class_dict = {"0": "url",
-              "1": "is_spam"}
+model = load(open("data/12_nlp_url_spam.pkl", "rb"))
+vectorizer = load(open("data/12_vectorizer_nlp_url_spam.pkl", "rb"))
+class_dict = {0: "No Spam", 1: "Spam"}
 
 st.title("Spam - Model prediction")
-st.markdown("""Power by: [Saray Ruiz](https://sarayruiz.net)""")
+st.markdown("""Power by: [Saray Ruiz]""")
 st.divider()
 
-val1 = st.text_input("Introduzca URL", value="", max_chars=None, key=None, type="default", help="Introduce desde htpp...", label_visibility="visible")
-    
-    
+url = st.text_input("Enter a URL to analyze")
+
 if st.button("Predict"):
-    prediction = str(model.predict([val1]))
+    url_vec = vectorizer.transform([url]).toarray()
+    prediction = model.predict(url_vec)[0]
     pred_class = class_dict[prediction]
     st.divider()
     st.write("Prediction:", pred_class)
