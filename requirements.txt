@@ -16,3 +16,4 @@ sympy>=1.10.1
 nltk
 regex
 wordcloud
+streamlit
