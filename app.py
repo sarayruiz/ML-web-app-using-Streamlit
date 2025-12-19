@@ -1,8 +1,8 @@
 from pickle import load
 import streamlit as st
 
-model = load(open("data/12_nlp_url_spam.pkl", "rb"))
-vectorizer = load(open("data/12_vectorizer_nlp_url_spam.pkl", "rb"))
+model = load(open("data/models/12_nlp_url_spam.pkl", "rb"))
+vectorizer = load(open("data/models/12_vectorizer_nlp_url_spam.pkl", "rb"))
 class_dict = {0: "No Spam", 1: "Spam"}
 
 st.title("Spam - Model prediction")
